@@ -1,0 +1,169 @@
+/* make a container that is 1140px wide */
+.thrive-product-section-container {
+  max-width: 1140px;
+  margin: auto;
+}
+
+/* set the width and height for the slider container */
+.thrive-product-swiper .swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.thrive-products-container {
+  margin: 100px 0;
+  display: grid;
+  grid-gap: 55px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+
+/* black border around the card */
+.thrive-grid-card {
+  border: 1px solid black;
+  text-align: center;
+  display: grid;
+  grid-template-rows:  320px 110px;
+}
+
+.thrive-grid-card img {
+  /* width: auto;
+  height: 300px;
+  overflow: hidden; */
+  object-fit:cover;
+  height: 100%;
+}
+
+/* possition relative necessary for the overlay */
+.thrive-image-container {
+  position: relative;
+  object-fit:cover;
+}
+
+/* Start Overlay and all it's funcitonality */
+
+.thrive-image-container:hover .thrive-product-overlay {
+  opacity: 1;
+}
+
+.thrive-product-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 320px;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgba(236,85,152,0.7);
+}
+
+.thrive-product-overlay .cart {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  grid-template-areas:  "top-left  top-left-mid top-right-mid top-right"
+                        "bot-left     bottom      bottom        bot-right"
+}
+
+/* quantity label that is being added through css */
+.thrive-product-overlay .cart::after{
+  grid-area: top-left-mid;
+  align-self: end;
+  content: "QTY";
+  background-color: white;
+  margin-right: 5px;
+  text-align: center;
+  padding: 5px;
+
+}
+
+.thrive-product-overlay .quantity{
+  grid-area: top-right-mid;
+  align-self: end;
+  margin-left: 5px;
+}
+
+.thrive-product-overlay .input-text {
+  border-radius: 0;
+  border: none;
+  text-align: center;
+}
+
+.thrive-product-overlay button {
+  grid-area: bottom;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  text-transform: uppercase
+}
+
+.thrive-product-overlay button:hover {
+  background-color: white;
+  color: #ec5598;
+}
+
+
+.thrive-product-overlay button:focus {
+  background-color:  #ec5598;
+  color:white;
+  font-weight: 600;
+}
+
+
+/* End overlay */
+
+/* the part at the card at the bottom that contains the title and the price */
+.thrive-card-detail {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.thrive-card-detail p {
+  font-family: "Nunito Sans";
+  font-size: 16px;
+}
+
+.tod-product-description {
+  color: black;
+  font-size: 20px;
+  margin: 15px 0 5px 0;
+  text-align: center;
+}
+
+.tod-price {
+  color: #EE4E7F;
+  font-size: 20px;
+  margin: 0 0 25px 0;
+  font-weight: 600;
+}
+
+ /* styling for next and previous buttons */
+
+ /* Prev & Next buttons styles */
+.thrive-slider-navigation.swiper-button-prev, 
+.thrive-slider-navigation.swiper-button-next {
+    width: 30px;
+    height: 30px;
+    background-size: 30%;
+    padding: 5px;
+    background-color: #EC5598;
+    border-radius: 100%;
+}
+
+/*use svg to make the next arrow white*/
+.thrive-slider-navigation.swiper-button-next{
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M27 22L5 44l-2.1-2.1L22.8 22 2.9 2.1 5 0l22 22z' fill='%23FFF'/%3E%3C/svg%3E");
+}
+
+/*use svg to make the prev arrow white*/
+.thrive-slider-navigation.swiper-button-prev {
+     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M0 22L22 0l2.1 2.1L4.2 22l19.9 19.9L22 44 0 22z' fill='%23FFF'/%3E%3C/svg%3E");
+}
