@@ -102,10 +102,15 @@
 
 .thrive-product-overlay button {
   grid-area: bottom;
-  border: none;
+  border: solid white 1px;
   color: #fff;
   font-size: 20px;
   text-transform: uppercase
+}
+
+.thrive-product-overlay button:focus {
+  background-color: white !important;
+  color: #ec5598 !important;
 }
 
 .thrive-product-overlay button:hover {

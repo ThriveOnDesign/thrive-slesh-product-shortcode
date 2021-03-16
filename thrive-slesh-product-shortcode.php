@@ -1,9 +1,9 @@
 <?php
    /*
-   Plugin Name: Thrive Woo Product Shortcode
+   Plugin Name: Slesh Custom Woo Product Display
    Plugin URI: http://thriveondesign.dev
-   description: a custom plugin created by ThriveOnDesign for BeautySlesh that creates a shortcode on the home page to display woocommerce products in a custom way
-   Version: 1.0
+   description: a custom plugin created by ThriveOnDesign for BeautySlesh that creates a shortcode display woocommerce products in a custom way
+   Version: 1.1
    Author: Wayne @ ThriveOnDesign
    Author URI: http://thriveondesign.dev
    License: GPL2
@@ -19,14 +19,13 @@
    * This function is used to create a shortcode that displays the products in a slider on the homepage
    */
   function thriveFeaturedProducts(){
-    ob_start();
+    ob_start(); // an output buffer so that the loop works better with Elementor
     $query_args = [
       'post_type' => 'product',
     ];
     
-    
     $result = new WP_Query($query_args);
-    // $product = wc_get_product(the_ID());
+    
     ?>
   
   <div class="thrive-product-section-container">
@@ -54,7 +53,7 @@
           </div>
           <?php
       endwhile;
-      wp_reset_postdata();
+      wp_reset_postdata(); 
     }
     ?>
       </div>
@@ -64,7 +63,7 @@
   </div>
   
   <?php
-  $out = ob_get_clean();
+  $out = ob_get_clean(); // get the contents of the buffer and end the buffer
   return $out;
   }
 
