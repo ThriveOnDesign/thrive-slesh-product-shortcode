@@ -19,15 +19,16 @@
    * This function is used to create a shortcode that displays the products in a slider on the homepage
    */
   function thriveFeaturedProducts(){
+    ob_start();
     $query_args = [
       'post_type' => 'product',
     ];
+    
     
     $result = new WP_Query($query_args);
     // $product = wc_get_product(the_ID());
     ?>
   
-
   <div class="thrive-product-section-container">
     <div class="thrive-product-swiper swiper-container">
       <div class="thrive-grid-container swiper-wrapper">
@@ -41,6 +42,9 @@
               <div class="thrive-product-overlay">
                 <?php woocommerce_simple_add_to_cart(); ?>
               </div>
+              <div class="slesh-plus-sign-container">
+                <p>+</p>
+              </div>
             </div>
             <div class="thrive-card-detail">
               <p class="tod-product-description"><?php the_title(); ?></p>          
@@ -50,6 +54,7 @@
           </div>
           <?php
       endwhile;
+      wp_reset_postdata();
     }
     ?>
       </div>
@@ -58,21 +63,25 @@
     </div>
   </div>
   
-  
-
   <?php
+  $out = ob_get_clean();
+  return $out;
   }
 
   /**
    * This function controls the display of the products on the products page
    */
   function thriveProductPage(){
+    
+    
+
     $query_args = [
       'post_type' => 'product',
     ];
-    
     $result = new WP_Query($query_args);
     
+    ob_start();
+
     ?>
   
     <div class="thrive-products-container">
@@ -86,6 +95,9 @@
             <div class="thrive-product-overlay">
               <?php woocommerce_simple_add_to_cart(); ?>
             </div>
+            <div class="slesh-plus-sign-container">
+              <p>+</p>
+            </div>
           </div>
           <div class="thrive-card-detail">
             <p class="tod-product-description"><?php the_title(); ?></p>          
@@ -95,15 +107,14 @@
         </div>
         <?php
     endwhile;
+    wp_reset_postdata();
   }
     ?>
   </div>
-     
-  
-  
-  
 
   <?php
+  $out = ob_get_clean();
+  return $out;
   }
 
 

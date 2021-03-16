@@ -29,9 +29,6 @@
 }
 
 .thrive-grid-card img {
-  /* width: auto;
-  height: 300px;
-  overflow: hidden; */
   object-fit:cover;
   height: 100%;
 }
@@ -48,6 +45,10 @@
   opacity: 1;
 }
 
+.thrive-image-container:hover .slesh-plus-sign-container {
+  opacity: 0;
+}
+
 .thrive-product-overlay {
   position: absolute;
   top: 0;
@@ -59,6 +60,10 @@
   opacity: 0;
   transition: .5s ease;
   background-color: rgba(236,85,152,0.7);
+}
+
+.thrive-product-overlay .stock{
+  display: none;
 }
 
 .thrive-product-overlay .cart {
@@ -117,6 +122,26 @@
 
 
 /* End overlay */
+
+.slesh-plus-sign-container {
+  position: absolute;
+  right: 26px;
+  bottom: 26px;
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+  width: 37px;
+  height: 37px;
+  background-color: #EC5598;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slesh-plus-sign-container p {
+  margin: 0;
+}
 
 /* the part at the card at the bottom that contains the title and the price */
 .thrive-card-detail {
