@@ -41,14 +41,6 @@
 
 /* Start Overlay and all it's funcitonality */
 
-/* .thrive-image-container:hover .thrive-product-overlay {
-  opacity: 1;
-} */
-
-/* .thrive-image-container:hover .slesh-plus-sign-container {
-  opacity: 0;
-} */
-
 .thrive-product-overlay {
   position: absolute;
   top: 0;
@@ -147,6 +139,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.slesh-plus-sign-container.open {
+  background-color: transparent;
+  transform: rotate(45deg);
+  transition: .5s ease;
 }
 
 .slesh-plus-sign-container p {
