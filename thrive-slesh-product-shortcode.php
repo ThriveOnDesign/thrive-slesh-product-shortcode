@@ -42,7 +42,7 @@
                 <?php woocommerce_simple_add_to_cart(); ?>
               </div>
               <div class="slesh-plus-sign-container">
-                <p>+</p>
+                <button>+</button>
               </div>
             </div>
             <div class="thrive-card-detail">
@@ -123,6 +123,7 @@
 
   function thrive_plugin_scripts() {
     wp_enqueue_script ('thriveProductSlider', '/wp-content/plugins/thrive-slesh-product-shortcode/assests/script/thriveProductSlider.js', ['jquery', 'swiper'], time(), true);
+    wp_enqueue_script ('thriveProductCustScript', '/wp-content/plugins/thrive-slesh-product-shortcode/assests/script/thriveProductCustScript.js', '', time(), true);
   } 
   
   add_action( 'wp_enqueue_scripts', 'thrive_plugin_scripts');

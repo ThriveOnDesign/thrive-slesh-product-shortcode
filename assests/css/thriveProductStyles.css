@@ -22,15 +22,15 @@
 
 /* black border around the card */
 .thrive-grid-card {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   text-align: center;
   display: grid;
-  grid-template-rows:  320px 110px;
+  grid-template-rows:  1fr 110px;
 }
 
 .thrive-grid-card img {
   object-fit:cover;
-  height: 100%;
+  width: 100%;
 }
 
 /* possition relative necessary for the overlay */
@@ -41,13 +41,13 @@
 
 /* Start Overlay and all it's funcitonality */
 
-.thrive-image-container:hover .thrive-product-overlay {
+/* .thrive-image-container:hover .thrive-product-overlay {
   opacity: 1;
-}
+} */
 
-.thrive-image-container:hover .slesh-plus-sign-container {
+/* .thrive-image-container:hover .slesh-plus-sign-container {
   opacity: 0;
-}
+} */
 
 .thrive-product-overlay {
   position: absolute;
@@ -55,11 +55,15 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 320px;
+  /* height: 320px; */
   width: 100%;
   opacity: 0;
   transition: .5s ease;
   background-color: rgba(236,85,152,0.7);
+}
+
+.thrive-product-overlay.open{
+  opacity : 1;
 }
 
 .thrive-product-overlay .stock{
@@ -129,6 +133,7 @@
 /* End overlay */
 
 .slesh-plus-sign-container {
+  cursor: pointer;
   position: absolute;
   right: 26px;
   bottom: 26px;
