@@ -42,7 +42,7 @@
                 <?php woocommerce_simple_add_to_cart(); ?>
               </div>
               <div class="slesh-plus-sign-container">
-                <button>+</button>
+                <p>+</p>
               </div>
             </div>
             <div class="thrive-card-detail">
@@ -57,9 +57,10 @@
     }
     ?>
       </div>
-      <div class="thrive-slider-navigation swiper-button-prev"></div>
-      <div class="thrive-slider-navigation swiper-button-next"></div>
+      
     </div>
+    <div class="thrive-slider-navigation swiper-button-prev"></div>
+    <div class="thrive-slider-navigation swiper-button-next"></div>
   </div>
   
   <?php

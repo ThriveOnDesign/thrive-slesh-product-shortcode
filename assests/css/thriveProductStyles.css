@@ -5,12 +5,10 @@
 }
 
 /* set the width and height for the slider container */
-.thrive-product-swiper .swiper-container {
-  width: 100%;
+.thrive-product-swiper.swiper-container {
+  max-width: 1000px;
   height: 100%;
 }
-
-
 
 .thrive-products-container {
   margin: 100px 0;
@@ -139,6 +137,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: .5s ease;
 }
 
 .slesh-plus-sign-container.open {

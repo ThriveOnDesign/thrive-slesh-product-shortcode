@@ -13,7 +13,7 @@ var thriveProductSwiper = new Swiper('.thrive-product-swiper', {
     centeredSlides: true,
     speed: 2000,
     autoplay: {
-      delay: 2500,
+      delay: 8000,
       disableOnInteraction: true,
     },
     
