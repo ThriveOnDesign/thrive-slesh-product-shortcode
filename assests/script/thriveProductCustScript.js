@@ -17,32 +17,3 @@ plusButton.forEach(
   plusButton.addEventListener('click', handlePlusClick)
   );
   
-/**
- * Playing around with sidecart
- */
-
-  const headerCart = document.querySelector('.elementor-menu-cart__toggle .elementor-button-icon');
-  const dataCounter = headerCart.dataset.counter;
-  const cartContainer = document.querySelector('.elementor-menu-cart__container');
-  
-  let count = localStorage.getItem('cartCount') || 0;
-
-function showSideCart() {
-  
-  if ( dataCounter !== "0" ) {
-    count++
-    localStorage.setItem('cartCount', count);
-  } else if ( dataCounter === "0" ) {
-    count = parseInt(dataCounter);
-    localStorage.setItem('cartCount', count);
-  }
-    
-  if( count === 1) {
-    console.log('sidecart function triggering')
-    cartContainer.classList.add('elementor-menu-cart--shown');
-  }
-    
-  
-}
-
-headerCart.addEventListener('datachange', showSideCart());
