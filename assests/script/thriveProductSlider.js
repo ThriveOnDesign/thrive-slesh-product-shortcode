@@ -8,10 +8,14 @@ const sliderContainer = document.querySelector('.thrive-product-swiper');
 var thriveProductSwiper = new Swiper('.thrive-product-swiper', {
   
     loop: true,
-    spaceBetween: 20,
+    spaceBetween: 10,
     slidesPerView: 1,
     centeredSlides: true,
     speed: 2000,
+    pagination: {
+      el: '.swiper-pagination',
+      
+    },
     autoplay: {
       delay: 8000,
       disableOnInteraction: true,

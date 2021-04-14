@@ -46,7 +46,7 @@
               </div>
             </div>
             <div class="thrive-card-detail">
-              <p class="tod-product-description"><?php the_title(); ?></p>          
+              <a href="<?php the_permalink();?>" class="tod-product-description"><?php the_title();?></a>          
               <?php $product = wc_get_product( get_the_ID() ); /* get the WC_Product Object */ ?>
               <p class="tod-price"><?php echo $product->get_price_html(); ?></p>
             </div>
@@ -59,8 +59,10 @@
       </div>
       
     </div>
+    <div class="swiper-pagination"></div>
     <div class="thrive-slider-navigation swiper-button-prev"></div>
     <div class="thrive-slider-navigation swiper-button-next"></div>
+    
   </div>
   
   <?php

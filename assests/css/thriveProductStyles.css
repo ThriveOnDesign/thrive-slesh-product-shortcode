@@ -18,6 +18,16 @@
   grid-template-rows: 1fr;
 }
 
+@media screen and (max-width: 768px){
+  .thrive-products-container {
+    margin: 0;
+    display: grid;
+    grid-gap: 55px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+} 
+
 /* black border around the card */
 .thrive-grid-card {
   /* border: 1px solid black; */
@@ -159,6 +169,10 @@
   align-items: center;
 }
 
+.thrive-card-detail a {
+  color: #3a3a3a;
+}
+
 .thrive-card-detail p {
   font-family: "Nunito Sans";
   font-size: 16px;
@@ -177,6 +191,34 @@
   margin: 0 0 25px 0;
   font-weight: 600;
 }
+
+  /*
+  * swiperJS pagination
+  */
+
+  .thrive-product-section-container > .swiper-pagination.swiper-pagination-bullets{
+    width: 100%;
+    margin: auto;
+    
+  }
+
+  .thrive-product-section-container > .swiper-pagination.swiper-pagination-bullets > .swiper-pagination-bullet{
+    margin: 3px;
+    background-color: #FFB5D1;
+    width: 7px;
+    height: 7px;
+  }
+
+  .thrive-product-section-container > .swiper-pagination.swiper-pagination-bullets > .swiper-pagination-bullet-active {
+    background-color: #EE4E7F;
+    
+  }
+
+  @media screen and (min-width: 768px){
+    .swiper-pagination.swiper-pagination-bullets{
+      display: none;
+    }
+  }
 
  /* styling for next and previous buttons */
 
@@ -199,4 +241,35 @@
 /*use svg to make the prev arrow white*/
 .thrive-slider-navigation.swiper-button-prev {
      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M0 22L22 0l2.1 2.1L4.2 22l19.9 19.9L22 44 0 22z' fill='%23FFF'/%3E%3C/svg%3E");
+}
+
+@media screen and (max-width: 768px) {  
+  .thrive-slider-navigation.swiper-button-prev, 
+  .thrive-slider-navigation.swiper-button-next {
+    width: 30px;
+    height: 30px;
+    background-size: 30%;
+    padding: 5px;
+    background-color: white;
+    border-radius: 100%;
+  }
+
+  .thrive-slider-navigation.swiper-button-next{
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M27 22L5 44l-2.1-2.1L22.8 22 2.9 2.1 5 0l22 22z' fill='%23000'/%3E%3C/svg%3E");
+  }
+
+/*use svg to make the prev arrow white*/
+  .thrive-slider-navigation.swiper-button-prev {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'%3E%3Cpath d='M0 22L22 0l2.1 2.1L4.2 22l19.9 19.9L22 44 0 22z' fill='%23000'/%3E%3C/svg%3E");
+  }
+
+}
+
+/* 
+  remove previous and next navigation for mobile
+*/
+@media screen and (max-width: 768px){
+  .thrive-slider-navigation.swiper-button-prev, .thrive-slider-navigation.swiper-button-next{
+    /* display: none; */
+  }
 }
