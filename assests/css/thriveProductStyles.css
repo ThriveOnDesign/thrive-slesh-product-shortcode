@@ -214,13 +214,12 @@
     
   }
 
-  @media screen and (min-width: 768px){
-    .swiper-pagination.swiper-pagination-bullets{
-      display: none;
-    }
-  }
-
  /* styling for next and previous buttons */
+
+ /* this confines the nav buttons to a smaller container */
+ .thrive-nav-container {
+   position: relative;
+ }
 
  /* Prev & Next buttons styles */
 .thrive-slider-navigation.swiper-button-prev, 
@@ -231,6 +230,7 @@
     padding: 5px;
     background-color: #EC5598;
     border-radius: 100%;
+    
 }
 
 /*use svg to make the next arrow white*/
@@ -268,8 +268,3 @@
 /* 
   remove previous and next navigation for mobile
 */
-@media screen and (max-width: 768px){
-  .thrive-slider-navigation.swiper-button-prev, .thrive-slider-navigation.swiper-button-next{
-    /* display: none; */
-  }
-}

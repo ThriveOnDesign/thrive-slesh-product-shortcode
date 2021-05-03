@@ -29,6 +29,7 @@
     ?>
   
   <div class="thrive-product-section-container">
+    <div class="thrive-nav-container">
     <div class="thrive-product-swiper swiper-container">
       <div class="thrive-grid-container swiper-wrapper">
         
@@ -52,16 +53,18 @@
             </div>
           </div>
           <?php
-      endwhile;
-      wp_reset_postdata(); 
-    }
-    ?>
+        endwhile;
+        wp_reset_postdata(); 
+        }
+        ?>
       </div>
       
     </div>
-    <div class="swiper-pagination"></div>
+
     <div class="thrive-slider-navigation swiper-button-prev"></div>
     <div class="thrive-slider-navigation swiper-button-next"></div>
+    </div>
+    <!-- <div class="swiper-pagination"></div> -->
     
   </div>
   
@@ -102,7 +105,7 @@
             </div>
           </div>
           <div class="thrive-card-detail">
-            <p class="tod-product-description"><?php the_title(); ?></p>          
+            <a href="<?php the_permalink();?>" class="tod-product-description"><?php the_title();?></a>       
             <?php $product = wc_get_product( get_the_ID() ); /* get the WC_Product Object */ ?>
             <p class="tod-price"><?php echo $product->get_price_html(); ?></p>
           </div>
