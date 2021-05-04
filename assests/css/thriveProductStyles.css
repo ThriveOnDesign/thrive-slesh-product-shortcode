@@ -20,7 +20,7 @@
 
 @media screen and (max-width: 768px){
   .thrive-products-container {
-    margin: 0;
+    margin: auto;
     display: grid;
     grid-gap: 55px;
     grid-template-columns: 1fr;
@@ -39,14 +39,18 @@
 .thrive-grid-card img {
   object-fit:cover;
   height: 320px;
-  width: 100%;
+  width: 320px;
 }
 
 /* possition relative necessary for the overlay */
 .thrive-image-container {
   position: relative;
   object-fit:cover;
+  /* width: 100%; */
+  margin: auto;
+  width: 320px;
 }
+
 
 /* Start Overlay and all it's funcitonality */
 
