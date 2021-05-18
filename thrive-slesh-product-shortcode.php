@@ -38,7 +38,9 @@
           ?>
           <div class="thrive-grid-card swiper-slide">
             <div class="thrive-image-container">
-              <?php the_post_thumbnail( ); ?>
+              <a href="<?php the_permalink();?>">
+                  <?php the_post_thumbnail( ); ?>
+              </a>
               <div class="thrive-product-overlay">
                 <?php woocommerce_simple_add_to_cart(); ?>
               </div>
@@ -96,7 +98,9 @@
         ?>
         <div class="thrive-grid-card">
           <div class="thrive-image-container">
-            <?php the_post_thumbnail( ); ?>
+            <a href="<?php the_permalink();?>">
+                  <?php the_post_thumbnail( ); ?>
+            </a>
             <div class="thrive-product-overlay">
               <?php woocommerce_simple_add_to_cart(); ?>
             </div>

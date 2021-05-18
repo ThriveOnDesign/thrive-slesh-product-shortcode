@@ -65,10 +65,12 @@
   opacity: 0;
   transition: .5s ease;
   background-color: rgba(236,85,152,0.7);
+  pointer-events: none;
 }
 
 .thrive-product-overlay.open{
   opacity : 1;
+  pointer-events: all;
 }
 
 .thrive-product-overlay .stock{
