@@ -15,6 +15,8 @@
     *
     */
 
+  if ( !defined( 'ABSPATH' ) ) exit;
+
   /**
    * This function is used to create a shortcode that displays the products in a slider on the homepage
    */
@@ -132,8 +134,8 @@
    */ 
 
   function thrive_plugin_scripts() {
-    wp_enqueue_script ('thriveProductSlider', '/wp-content/plugins/thrive-slesh-product-shortcode/assests/script/thriveProductSlider.js', ['jquery', 'swiper'], time(), true);
-    wp_enqueue_script ('thriveProductCustScript', '/wp-content/plugins/thrive-slesh-product-shortcode/assests/script/thriveProductCustScript.js', '', time(), true);
+    wp_enqueue_script ('thriveProductSlider', plugin_dir_url(__FILE__).'/assets/script/thriveProductSlider.js', ['jquery', 'swiper'], time(), true);
+    wp_enqueue_script ('thriveProductCustScript', plugin_dir_url(__FILE__).'/assets/script/thriveProductCustScript.js', '', time(), true);
   } 
   
   add_action( 'wp_enqueue_scripts', 'thrive_plugin_scripts');
@@ -141,11 +143,68 @@
   // load the styles for the plugin
 
   function enqueue_thrive_product_style() {
-    wp_enqueue_style('thriveProductStyles', '/wp-content/plugins/thrive-slesh-product-shortcode/assests/css/thriveProductStyles.css', '', time());
+    wp_enqueue_style('thriveProductStyles', plugin_dir_url(__FILE__).'/assets/css/thriveProductStyles.css', '', time());
   }
   
   add_action('wp_enqueue_scripts', 'enqueue_thrive_product_style', 11);
 
+  /**
+   * for Ajax
+   */
+  
+  add_action( 'init', 'thrive_ajax_script_enqueuer' );
+  
+  function thrive_ajax_script_enqueuer() {
+    // registering the js file that will have the ajax call
+    wp_register_script( 'thrive-ajax-script', plugin_dir_url(__FILE__).'/assets/script/thriveAjaxScript.js', array( 'jquery' ), time(), true );
+    // passing variables from this file to the js file where the ajax call will be
+    wp_localize_script( 
+        'thrive-ajax-script', 
+        'myAjax', 
+        [
+          'ajax_url'  => admin_url( 'admin-ajax.php' ),
+          'nonce'     => wp_create_nonce( 'nonce_name' )
+        ]
+        );
+
+    wp_enqueue_script( 'jquery' );
+    wp_enqueue_script( 'thrive-ajax-script' );
+  }
+
+
+  //make ajax function available to loggin users
+  add_action("wp_ajax_thrive_ajax_add_to_cart", "thrive_ajax_add_to_cart");
+  //make ajax available to users who are not logged in
+  add_action("wp_ajax_nopriv_thrive_ajax_add_to_cart", "thrive_ajax_add_to_cart");
+
+  function thrive_ajax_add_to_cart() {
+    check_ajax_referer( 'nonce_name' );
+     
+
+    $product_id = apply_filters('woocommerce_add_to_cart_product_id', absint($_POST['product_id']));
+    $qty = empty($_POST['qty']) ? 1 : wc_stock_amount($_POST['qty']);
+
+    // var_dump($qty);die;
+
+    WC()->cart->add_to_cart( $product_id, $qty );
+
+    // do_action('woocommerce_ajax_added_to_cart', $product_id);
+
+    // if ('yes' === get_option('woocommerce_cart_redirect_after_add')) {
+    //   wc_add_to_cart_message(array($product_id => $quantity), true);
+
+    // }
+
+    // WC_AJAX :: get_refreshed_fragments();
+    
+    die();
+
+  }
+
+
+  /**
+   * end Ajax
+   */
 
   /**
    * This creates the shortcode that can be inserted anywhere in WP

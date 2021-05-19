@@ -1,5 +1,6 @@
 const plusButton = Array.from(document.querySelectorAll(".slesh-plus-sign-container"));
-const modal = document.querySelectorAll('.thrive-product-overlay');
+const addToCartButton = Array.from(document.querySelectorAll(".thrive-product-overlay button.single_add_to_cart_button.button.alt"))
+const modal = Array.from(document.querySelectorAll('.thrive-product-overlay'));
 
 function handlePlusClick(e) {
   // overlay is a the previous sibling of the "button"
@@ -12,8 +13,22 @@ function handlePlusClick(e) {
   
 }
 
+// function handleAddToCartClick(e) {
+//   e.preventDefault();
+  
+  
+//   modal.forEach(modal => modal.classList.contains('open') ? modal.classList.remove('open') : null);
+//   plusButton.forEach(plusButton => plusButton.classList.contains('open') ? plusButton.classList.remove('open') : null);
+  
+// }
+
 plusButton.forEach(
   plusButton => 
   plusButton.addEventListener('click', handlePlusClick)
   );
+
+// addToCartButton.forEach(
+//   cartButton =>
+//   cartButton.addEventListener('submit', handleAddToCartClick)
+// );
   
