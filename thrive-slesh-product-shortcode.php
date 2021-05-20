@@ -156,48 +156,54 @@
   
   function thrive_ajax_script_enqueuer() {
     // registering the js file that will have the ajax call
-    wp_register_script( 'thrive-ajax-script', plugin_dir_url(__FILE__).'/assets/script/thriveAjaxScript.js', array( 'jquery' ), time(), true );
+    wp_register_script( 'thrive-ajax-add-to-cart', plugin_dir_url(__FILE__).'/assets/script/thriveAjaxAddToCart.js', array( 'jquery' ), time(), true );
     // passing variables from this file to the js file where the ajax call will be
     wp_localize_script( 
-        'thrive-ajax-script', 
+        'thrive-ajax-add-to-cart', 
         'myAjax', 
         [
-          'ajax_url'  => admin_url( 'admin-ajax.php' ),
-          'nonce'     => wp_create_nonce( 'nonce_name' )
+          // 'ajax_url'  => admin_url( 'admin-ajax.php' ),
+          // 'nonce'     => wp_create_nonce( 'nonce_name' )
         ]
         );
 
     wp_enqueue_script( 'jquery' );
-    wp_enqueue_script( 'thrive-ajax-script' );
+    wp_enqueue_script( 'thrive-ajax-add-to-cart' );
   }
 
 
   //make ajax function available to loggin users
-  add_action("wp_ajax_thrive_ajax_add_to_cart", "thrive_ajax_add_to_cart");
+  add_action("wp_ajax_woocommerce_ajax_add_to_cart", "woocommerce_ajax_add_to_cart");
   //make ajax available to users who are not logged in
-  add_action("wp_ajax_nopriv_thrive_ajax_add_to_cart", "thrive_ajax_add_to_cart");
+  add_action("wp_ajax_nopriv_woocommerce_ajax_add_to_cart", "woocommerce_ajax_add_to_cart");
 
-  function thrive_ajax_add_to_cart() {
-    check_ajax_referer( 'nonce_name' );
-     
-
+  function woocommerce_ajax_add_to_cart() {
+    // check_ajax_referer( 'nonce_name' );
     $product_id = apply_filters('woocommerce_add_to_cart_product_id', absint($_POST['product_id']));
-    $qty = empty($_POST['qty']) ? 1 : wc_stock_amount($_POST['qty']);
+    $quantity = empty($_POST['quantity']) ? 1 : wc_stock_amount($_POST['quantity']);
+    $variation_id = absint($_POST['variation_id']);
+    $passed_validation = apply_filters('woocommerce_add_to_cart_validation', true, $product_id, $quantity);
+    $product_status = get_post_status($product_id);
 
-    // var_dump($qty);die;
+    if ($passed_validation && WC()->cart->add_to_cart($product_id, $quantity, $variation_id) && 'publish' === $product_status) {
 
-    WC()->cart->add_to_cart( $product_id, $qty );
+        do_action('woocommerce_ajax_added_to_cart', $product_id);
 
-    // do_action('woocommerce_ajax_added_to_cart', $product_id);
+        if ('yes' === get_option('woocommerce_cart_redirect_after_add')) {
+            wc_add_to_cart_message(array($product_id => $quantity), true);
+        }
 
-    // if ('yes' === get_option('woocommerce_cart_redirect_after_add')) {
-    //   wc_add_to_cart_message(array($product_id => $quantity), true);
+        WC_AJAX :: get_refreshed_fragments();
+    } else {
 
-    // }
+        $data = array(
+            'error' => true,
+            'product_url' => apply_filters('woocommerce_cart_redirect_after_error', get_permalink($product_id), $product_id));
 
-    // WC_AJAX :: get_refreshed_fragments();
-    
-    die();
+        echo wp_send_json($data);
+    }
+
+    wp_die();
 
   }
 
