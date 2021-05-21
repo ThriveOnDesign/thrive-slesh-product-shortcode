@@ -2,8 +2,8 @@
    /*
    Plugin Name: Slesh Custom Woo Product Display
    Plugin URI: http://thriveondesign.dev
-   description: a custom plugin created by ThriveOnDesign for BeautySlesh that creates a shortcode display woocommerce products in a custom way
-   Version: 1.1
+   description: a custom plugin created by ThriveOnDesign for BeautySlesh that creates a shortcode display woocommerce products in a custom way. Version 2 now supports Ajax
+   Version: 2.0 
    Author: Wayne @ ThriveOnDesign
    Author URI: http://thriveondesign.dev
    License: GPL2

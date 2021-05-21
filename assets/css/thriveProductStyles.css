@@ -136,6 +136,9 @@
   font-weight: 600;
 }
 
+a[title="View cart"] { 
+  display: none !important; 
+}
 
 /* End overlay */
 

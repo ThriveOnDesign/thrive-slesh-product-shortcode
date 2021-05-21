@@ -1,3 +1,5 @@
+
+
 (function ($) {
    $( document ).on( 'click', '.single_add_to_cart_button', function(e) {
       e.preventDefault();
@@ -8,9 +10,6 @@
             product_qty = $form.find('input[name=quantity]').val() || 1,
             product_id = $form.find('input[name=product_id]').val() || id,
             variation_id = $form.find('input[name=variation_id]').val() || 0;
-
-      console.log(product_id);
-      console.log(product_qty);
 
       var data = {
          action: 'woocommerce_ajax_add_to_cart',
@@ -42,6 +41,15 @@
              }
          },
      });
+
+     var $thisButton = $(this),
+         overlay = $thisButton.closest('.thrive-product-overlay'),
+         plusSign = overlay.next('.slesh-plus-sign-container'); 
+
+         setTimeout( function() {
+            overlay.removeClass('open');
+            plusSign.removeClass('open');
+         }, 1000);
 
    });
 })(jQuery);
