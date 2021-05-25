@@ -3,7 +3,7 @@
    Plugin Name: Slesh Custom Woo Product Display
    Plugin URI: http://thriveondesign.dev
    description: a custom plugin created by ThriveOnDesign for BeautySlesh that creates a shortcode display woocommerce products in a custom way. Version 2 now supports Ajax
-   Version: 2.0 
+   Version: 2.1
    Author: Wayne @ ThriveOnDesign
    Author URI: http://thriveondesign.dev
    License: GPL2
@@ -24,6 +24,8 @@
     ob_start(); // an output buffer so that the loop works better with Elementor
     $query_args = [
       'post_type' => 'product',
+      'orderby' => 'modified',
+      
     ];
     
     $result = new WP_Query($query_args);
@@ -48,6 +50,9 @@
               </div>
               <div class="slesh-plus-sign-container">
                 <p>+</p>
+              </div>
+              <div class="thrive-product-added-to-cart-overlay">
+                <p>Added to cart</p>
               </div>
             </div>
             <div class="thrive-card-detail">
@@ -82,8 +87,6 @@
    */
   function thriveProductPage(){
     
-    
-
     $query_args = [
       'post_type' => 'product',
     ];
@@ -103,11 +106,15 @@
             <a href="<?php the_permalink();?>">
                   <?php the_post_thumbnail( ); ?>
             </a>
+            
             <div class="thrive-product-overlay">
               <?php woocommerce_simple_add_to_cart(); ?>
             </div>
             <div class="slesh-plus-sign-container">
               <p>+</p>
+            </div>
+            <div class="thrive-product-added-to-cart-overlay">
+              <p>Added to cart</p>
             </div>
           </div>
           <div class="thrive-card-detail">

@@ -44,12 +44,19 @@
 
      var $thisButton = $(this),
          overlay = $thisButton.closest('.thrive-product-overlay'),
-         plusSign = overlay.next('.slesh-plus-sign-container'); 
+         plusSign = overlay.next('.slesh-plus-sign-container'), 
+         addedToCartOverlay = plusSign.next('.thrive-product-added-to-cart-overlay');
 
          setTimeout( function() {
             overlay.removeClass('open');
             plusSign.removeClass('open');
-         }, 1000);
+            setTimeout(function() {
+                addedToCartOverlay.addClass('open');
+                setTimeout(function(){
+                    addedToCartOverlay.removeClass('open')
+                },3000)
+            }, 0)
+         }, 500);
 
    });
 })(jQuery);
