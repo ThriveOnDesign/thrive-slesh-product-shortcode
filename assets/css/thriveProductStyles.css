@@ -66,6 +66,9 @@
   transition: .5s ease;
   background-color: rgba(236,85,152,0.7);
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .thrive-product-overlay.open{
@@ -73,8 +76,17 @@
   pointer-events: all;
 }
 
-.thrive-product-overlay .stock{
+.thrive-product-overlay .stock.in-stock{
   display: none;
+}
+
+.thrive-product-overlay .out-of-stock {
+  color: white;
+  margin: 0 15px;
+}
+
+.thrive-product-overlay .stock.out-of-stock {
+  font-weight: 800;
 }
 
 .thrive-product-overlay .cart {

@@ -50,6 +50,8 @@
               </a>
               <div class="thrive-product-overlay">
                 <?php woocommerce_simple_add_to_cart(); ?>
+                <?php $product = wc_get_product( get_the_ID() ); /* get the WC_Product Object */ ?>
+                <p class='out-of-stock'><?php if ($product->get_stock_status() === 'outofstock') echo 'See product page for more options'; ?> </p>
               </div>
               <div class="slesh-plus-sign-container">
                 <p>+</p>
@@ -84,6 +86,7 @@
   $out = ob_get_clean(); // get the contents of the buffer and end the buffer
   return $out;
   }
+  
 
   /**
    * This function controls the display of the products on the products page
@@ -114,7 +117,9 @@
             </a>
             
             <div class="thrive-product-overlay">
-              <?php woocommerce_simple_add_to_cart(); ?>
+              <?php woocommerce_simple_add_to_cart();?>
+              <?php $product = wc_get_product( get_the_ID() ); /* get the WC_Product Object */ ?>
+              <p class='out-of-stock'><?php if ($product->get_stock_status() === 'outofstock') echo 'See product page for more options'; ?> </p>
             </div>
             <div class="slesh-plus-sign-container">
               <p>+</p>
@@ -126,7 +131,7 @@
           <div class="thrive-card-detail">
             <a href="<?php the_permalink();?>" class="tod-product-description"><?php the_title();?></a>       
             <?php $product = wc_get_product( get_the_ID() ); /* get the WC_Product Object */ ?>
-            <p class="tod-price"><?php echo $product->get_price_html(); ?></p>
+            <p class="tod-price"><?php echo $product->get_price_html(); ?> </p>
           </div>
         </div>
         <?php
